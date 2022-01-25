@@ -1,0 +1,1218 @@
+{
+	"info": {
+		"_postman_id": "c3e8f68e-7be7-4705-870c-7e20c8f4d621",
+		"name": "KalturaAndImpelsys VS VootKids [TOTAL COUNT2]",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Kaltura-anonymousLogin",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "f35ac112-e496-4360-9c8f-9e7d2f653524",
+						"exec": [
+							"const jsonData = pm.response.json();",
+							"pm.environment.set(\"ks\", jsonData.result.ks);",
+							"// pm.test(\"Status code is 200\", function () {",
+							"//     pm.response.to.have.status(200);",
+							"// });",
+							"// pm.test(\"Kaltura Session is  \" + jsonData.result.ks);",
+							"// {",
+							"// pm.environment.set(\"ks\", jsonData.result.ks);",
+							"// }",
+							""
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "87297c35-42d2-4c15-b13b-55c349d2279c",
+						"exec": [
+							"\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"partnerId\":225,\r\n  \"apiVersion\":\"4.4\"\r\n}",
+					"options": {
+						"raw": {}
+					}
+				},
+				"url": {
+					"raw": "https://rest-as.ott.kaltura.com/v4_4/api_v3/service/ottUser/action/anonymousLogin",
+					"protocol": "https",
+					"host": [
+						"rest-as",
+						"ott",
+						"kaltura",
+						"com"
+					],
+					"path": [
+						"v4_4",
+						"api_v3",
+						"service",
+						"ottUser",
+						"action",
+						"anonymousLogin"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Kaltura Total Episodes",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "785c276e-c8a7-4eac-8d17-4a0a42d2d28e",
+						"exec": [
+							"const jsonData = pm.response.json();",
+							"pm.test(\"Kaltura Episodes count is \" + jsonData.result.totalCount );",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n \"filter\":{\r\n  \"objectType\":\"KalturaSearchAssetFilter\",\r\n  \"typeIn\": \"415\"\r\n },\r\n \"pager\":{\r\n   \"pageSize\": 10,\r\n   \"pageIndex\": 1\r\n }, \r\n\"apiVersion\":\"4.4\",\r\n\"ks\":\"{{ks}}\"\r\n}",
+					"options": {
+						"raw": {}
+					}
+				},
+				"url": {
+					"raw": "rest-as.ott.kaltura.com/v4_4/api_v3/service/asset/action/list",
+					"host": [
+						"rest-as",
+						"ott",
+						"kaltura",
+						"com"
+					],
+					"path": [
+						"v4_4",
+						"api_v3",
+						"service",
+						"asset",
+						"action",
+						"list"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Kaltura Total Series",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "3239eadf-4df1-453a-bb12-f1af7e50beb3",
+						"exec": [
+							"const jsonData = pm.response.json();",
+							"pm.test(\"Kaltura Series count is \" + jsonData.result.totalCount );",
+							"{",
+							"pm.environment.set(\"totalCountSeries\", jsonData.result.totalCount);",
+							"}"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n \"filter\":{\r\n  \"objectType\":\"KalturaSearchAssetFilter\",\r\n  \"typeIn\": \"418\"\r\n },\r\n \"pager\":{\r\n   \"pageSize\": 10,\r\n   \"pageIndex\": 1\r\n }, \r\n\"apiVersion\":\"4.4\",\r\n\"ks\":\"{{ks}}\"\r\n}",
+					"options": {
+						"raw": {}
+					}
+				},
+				"url": {
+					"raw": "rest-as.ott.kaltura.com/v4_4/api_v3/service/asset/action/list",
+					"host": [
+						"rest-as",
+						"ott",
+						"kaltura",
+						"com"
+					],
+					"path": [
+						"v4_4",
+						"api_v3",
+						"service",
+						"asset",
+						"action",
+						"list"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "KidsSeries_UAT",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "cfd15c7f-0742-4daa-86d5-22b51f241505",
+						"exec": [
+							"const jsonData = pm.response.json();",
+							"",
+							"",
+							"pm.environment.set(\"KidsCharacters UAT\", jsonData.assets.totalItems);",
+							"",
+							"",
+							"",
+							"if (jsonData.assets.totalItems == pm.environment.get('totalCountSeries', '{{totalCountSeries}}')) {",
+							"    pm.test(\"KidsSeries UAT API count is \" + jsonData.assets.totalItems);",
+							"    ",
+							"} else {",
+							"    pm.test( '<a href=\"https://apiuat.vootkids.com/app/curated/v1/kidsCharacters.json?limit=8&offSet=0\">KidsSeries UAT Count is</a> '+ jsonData.assets.totalItems + \" and \" + \"Kaltura Series Count is \" +",
+							"        pm.environment.get('totalCountSeries', '{{totalCountSeries}}'),",
+							"        function() {",
+							"            throw new Error('Total count of KidsSeries_UAT is >>>>NOT EQUAL<<<<to Kaltura Series');",
+							"        });",
+							"}"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"type": "text",
+						"value": "application/json",
+						"disabled": true
+					}
+				],
+				"url": {
+					"raw": "https://apiuat.vootkids.com/app/curated/v1/kidsCharacters.json?limit=8&offSet=0",
+					"protocol": "https",
+					"host": [
+						"apiuat",
+						"vootkids",
+						"com"
+					],
+					"path": [
+						"app",
+						"curated",
+						"v1",
+						"kidsCharacters.json"
+					],
+					"query": [
+						{
+							"key": "limit",
+							"value": "8"
+						},
+						{
+							"key": "offSet",
+							"value": "0"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "KidsSeries_PROD",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "d062b8e5-84e0-42ba-a5dc-ca6a0998fa83",
+						"exec": [
+							"const jsonData = pm.response.json();",
+							"//pm.test(\"KidsCharacters PROD Count is \" + jsonData.assets.totalItems);",
+							"",
+							"if (jsonData.assets.totalItems == pm.environment.get('totalCountSeries', '{{totalCountSeries}}')) {",
+							"    pm.test('kidsSeries_PROD API count is ' + jsonData.assets.totalItems);",
+							"    ",
+							"} else {",
+							"    pm.test('<a href=\"https://api.vootkids.com/app/curated/v1/kidsCharacters.json?limit=8&offSet=0\">KidsSeries PROD Count is</a> ' + jsonData.assets.totalItems + \" and \" + \"Kaltura Series Count is \" +",
+							"        pm.environment.get('totalCountSeries', '{{totalCountSeries}}'),",
+							"        function() {",
+							"            throw new Error('Total count of KidsSeries_PROD is >>>>NOT EQUAL<<<<to Kaltura Series');",
+							"        });",
+							"}"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"type": "text",
+						"value": "application/json; text/hml",
+						"disabled": true
+					}
+				],
+				"url": {
+					"raw": "https://api.vootkids.com/app/curated/v1/kidsCharacters.json?limit=8&offSet=0",
+					"protocol": "https",
+					"host": [
+						"api",
+						"vootkids",
+						"com"
+					],
+					"path": [
+						"app",
+						"curated",
+						"v1",
+						"kidsCharacters.json"
+					],
+					"query": [
+						{
+							"key": "limit",
+							"value": "8"
+						},
+						{
+							"key": "offSet",
+							"value": "0"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Kaltura Total Movies",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "901ae2b6-7b31-4958-a8ce-d58ea6025a1d",
+						"exec": [
+							"const jsonData = pm.response.json();",
+							"pm.test(\"Kaltura Movies count is \" + jsonData.result.totalCount );",
+							"{",
+							"pm.environment.set(\"totalCountMovie\", jsonData.result.totalCount);",
+							"}",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n \"filter\":{\r\n  \"objectType\":\"KalturaSearchAssetFilter\",\r\n  \"typeIn\": \"414\"\r\n },\r\n \"pager\":{\r\n   \"pageSize\": 10,\r\n   \"pageIndex\": 1\r\n }, \r\n\"apiVersion\":\"4.4\",\r\n\"ks\":\"{{ks}}\"\r\n}",
+					"options": {
+						"raw": {}
+					}
+				},
+				"url": {
+					"raw": "rest-as.ott.kaltura.com/v4_4/api_v3/service/asset/action/list",
+					"host": [
+						"rest-as",
+						"ott",
+						"kaltura",
+						"com"
+					],
+					"path": [
+						"v4_4",
+						"api_v3",
+						"service",
+						"asset",
+						"action",
+						"list"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "kidsMovies_UAT",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "2b2376ea-02b8-45ff-a1f9-6f1d2cbf298b",
+						"exec": [
+							"const jsonData = pm.response.json();",
+							"",
+							"pm.environment.set(\"kidsMovies_UAT\", jsonData.assets.totalItems);",
+							"",
+							"",
+							"if (jsonData.assets.totalItems == pm.environment.get(\"totalCountMovie\", '{{totalCountMovie}}')) {",
+							"  pm.test(\"kidsMovies_UAT API count is \" + jsonData.assets.totalItems);",
+							"} else {",
+							"    pm.test('<a href=\"https://apiuat.vootkids.com/app/curated/v1/kidsMovies.json?limit=8&offSet=0\">kidsMovies_UAT Count is</a> ' + jsonData.assets.totalItems + \" and \" + \"Kaltura Movies Count is \" +",
+							"        pm.environment.get(\"totalCountMovie\", '{{totalCountMovie}}'),",
+							"        function() {",
+							"            throw new Error('Total count of kidsMovies_UAT  is >>>>NOT EQUAL<<<< to Kaltura Movies');",
+							"        });",
+							"}"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"type": "text",
+						"value": "application/json; text/hml",
+						"disabled": true
+					}
+				],
+				"url": {
+					"raw": "https://apiuat.vootkids.com/app/curated/v1/kidsMovies.json?limit=8&offSet=0",
+					"protocol": "https",
+					"host": [
+						"apiuat",
+						"vootkids",
+						"com"
+					],
+					"path": [
+						"app",
+						"curated",
+						"v1",
+						"kidsMovies.json"
+					],
+					"query": [
+						{
+							"key": "limit",
+							"value": "8"
+						},
+						{
+							"key": "offSet",
+							"value": "0"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "kidsMovies_PROD",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "e55dd491-f2b3-4258-9c81-aaf270d763c9",
+						"exec": [
+							"const jsonData = pm.response.json();",
+							"//pm.test(\"kidsMovies_PROD Count is \" + jsonData.assets.totalItems);",
+							"",
+							"if (jsonData.assets.totalItems == pm.environment.get(\"totalCountMovie\", '{{totalCountMovie}}')) {",
+							"",
+							"    pm.test('kidsMovies_PROD API count is ' + jsonData.assets.totalItems);",
+							"    ",
+							"} else {",
+							"    pm.test('<a href=\"https://api.vootkids.com/app/curated/v1/kidsMovies.json?limit=8&offSet=0\">kidsMovies_PROD Count is</a> '+ jsonData.assets.totalItems + \" and \" + \"Kaltura Movies Count is \" +",
+							"        pm.environment.get(\"totalCountMovie\", '{{totalCountMovie}}'),",
+							"        function() {",
+							"            throw new Error('Total count of kidsMovies_PROD is >>>>NOT EQUAL<<<< to Kaltura Movies');",
+							"        });",
+							"}",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"type": "text",
+						"value": "application/json; text/hml",
+						"disabled": true
+					}
+				],
+				"url": {
+					"raw": "https://api.vootkids.com/app/curated/v1/kidsMovies.json?limit=8&offSet=0",
+					"protocol": "https",
+					"host": [
+						"api",
+						"vootkids",
+						"com"
+					],
+					"path": [
+						"app",
+						"curated",
+						"v1",
+						"kidsMovies.json"
+					],
+					"query": [
+						{
+							"key": "limit",
+							"value": "8"
+						},
+						{
+							"key": "offSet",
+							"value": "0"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Kaltura Total Audios",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "368cb8ad-90f6-4cfc-adb7-2aa0de16d1c2",
+						"exec": [
+							"const jsonData = pm.response.json();",
+							"pm.test(\"Kaltura Audios count is \" + jsonData.result.totalCount );",
+							"",
+							"{",
+							"pm.environment.set(\"totalCountAudio\", jsonData.result.totalCount);",
+							"}"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n \"filter\":{\r\n  \"objectType\":\"KalturaSearchAssetFilter\",\r\n  \"typeIn\": \"416\"\r\n },\r\n \"pager\":{\r\n   \"pageSize\": 10,\r\n   \"pageIndex\": 1\r\n }, \r\n\"apiVersion\":\"4.4\",\r\n\"ks\":\"{{ks}}\"\r\n}",
+					"options": {
+						"raw": {}
+					}
+				},
+				"url": {
+					"raw": "rest-as.ott.kaltura.com/v4_4/api_v3/service/asset/action/list",
+					"host": [
+						"rest-as",
+						"ott",
+						"kaltura",
+						"com"
+					],
+					"path": [
+						"v4_4",
+						"api_v3",
+						"service",
+						"asset",
+						"action",
+						"list"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "allKidsAudios_UAT",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "b3fc4c22-8ee4-4d2c-b3ad-bb9e50a9fc2f",
+						"exec": [
+							"const jsonData = pm.response.json();",
+							"",
+							"pm.environment.set(\"AllKA_UAT\", jsonData.assets.totalItems);",
+							"",
+							"",
+							"if (jsonData.assets.totalItems == pm.environment.get(\"totalCountAudio\", '{{totalCountAudio}}')) {",
+							"    pm.test(\"allKidsAudios UAT API count is \" + jsonData.assets.totalItems);",
+							"} else {",
+							"    pm.test('<a href=\"https://apiuat.vootkids.com/app/ks/v1/allKidsAudios.json?pageSize=8&pageIndex=0\">allKidsAudios UAT Count is</a> ' + jsonData.assets.totalItems + \" and \" + \"Kaltura Audios Count is \" +",
+							"        pm.environment.get(\"totalCountAudio\", '{{totalCountAudio}}'),",
+							"        function() {",
+							"            throw new Error('Total count of allKidsAudios_UAT is >>>>NOT EQUAL<<<< to Kaltura Audios');",
+							"        });",
+							"}"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"type": "text",
+						"value": "application/json; text/hml",
+						"disabled": true
+					}
+				],
+				"url": {
+					"raw": "https://apiuat.vootkids.com/app/ks/v1/allKidsAudios.json?pageSize=8&pageIndex=0",
+					"protocol": "https",
+					"host": [
+						"apiuat",
+						"vootkids",
+						"com"
+					],
+					"path": [
+						"app",
+						"ks",
+						"v1",
+						"allKidsAudios.json"
+					],
+					"query": [
+						{
+							"key": "pageSize",
+							"value": "8"
+						},
+						{
+							"key": "pageIndex",
+							"value": "0"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "allKidsAudios_PROD",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "074c41ad-968c-4219-851d-0d213a601368",
+						"exec": [
+							"const jsonData = pm.response.json();",
+							"//",
+							"pm.environment.set(\"AllKA_PROD\", jsonData.assets.totalItems);",
+							"",
+							"if (jsonData.assets.totalItems == pm.environment.get(\"totalCountAudio\", '{{totalCountAudio}}')) {",
+							"   pm.test(\"allKidsAudios PROD API count is \" + jsonData.assets.totalItems);",
+							"} else {",
+							"    pm.test('<a href=\"https://api.vootkids.com/app/ks/v1/allKidsAudios.json?pageSize=8&pageIndex=0\">allKidsAudios PROD Count is</a> ' + jsonData.assets.totalItems + \" and \" + \"Kaltura Audios Count is \" +",
+							"        pm.environment.get(\"totalCountAudio\", '{{totalCountAudio}}'),",
+							"        function() {",
+							"            throw new Error('Total count of allKidsAudios_PROD is >>>>NOT EQUAL<<<< to Kaltura Audios');",
+							"        });",
+							"}"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json; text/hml",
+						"type": "text",
+						"disabled": true
+					}
+				],
+				"url": {
+					"raw": "https://api.vootkids.com/app/ks/v1/allKidsAudios.json?pageSize=8&pageIndex=0",
+					"protocol": "https",
+					"host": [
+						"api",
+						"vootkids",
+						"com"
+					],
+					"path": [
+						"app",
+						"ks",
+						"v1",
+						"allKidsAudios.json"
+					],
+					"query": [
+						{
+							"key": "pageSize",
+							"value": "8"
+						},
+						{
+							"key": "pageIndex",
+							"value": "0"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "KidsAudios_Ordering_UAT",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "b88acec1-c8ae-46ce-ade5-0dd420973975",
+						"exec": [
+							"const jsonData = pm.response.json();",
+							"//",
+							"pm.environment.set(\"AllKA_ORD_UAT\", jsonData.assets.totalItems);",
+							"",
+							"if (jsonData.assets.totalItems == pm.environment.get(\"totalCountAudio\", '{{totalCountAudio}}')) {",
+							"   pm.test(\"KidsAudios_Ordering_UAT API count is \" + jsonData.assets.totalItems);",
+							"} else {",
+							"    pm.test('<a href=\"https://apiuat.vootkids.com/app/curated/v1/kidsAudios.json?limit=8&offSet=0\">KidsAudios_Ordering_UAT Count is</a> ' + jsonData.assets.totalItems + \" and \" + \"Kaltura Audios Count is \" +",
+							"        pm.environment.get(\"totalCountAudio\", '{{totalCountAudio}}'),",
+							"        function() {",
+							"            throw new Error('Total count of KidsAudios_Ordering_UAT is >>>>NOT EQUAL<<<< to Kaltura Audios');",
+							"        });",
+							"}"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"type": "text",
+						"value": "application/json; text/hml",
+						"disabled": true
+					}
+				],
+				"url": {
+					"raw": "https://apiuat.vootkids.com/app/curated/v1/kidsAudios.json?limit=8&offSet=0",
+					"protocol": "https",
+					"host": [
+						"apiuat",
+						"vootkids",
+						"com"
+					],
+					"path": [
+						"app",
+						"curated",
+						"v1",
+						"kidsAudios.json"
+					],
+					"query": [
+						{
+							"key": "limit",
+							"value": "8"
+						},
+						{
+							"key": "offSet",
+							"value": "0"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "KidsAudios_Ordering_PROD",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "7aef2a27-cdef-454e-a123-cf7d740cabd6",
+						"exec": [
+							"const jsonData = pm.response.json();",
+							"//pm.test(\"KidsAudios_Ordering_PROD Count is \" + jsonData.assets.totalItems);",
+							"",
+							"if (jsonData.assets.totalItems == pm.environment.get(\"totalCountAudio\", '{{totalCountAudio}}')) {",
+							"",
+							"    pm.test('kidsAudios_Ordering_PROD API count is ' + jsonData.assets.totalItems);",
+							"    ",
+							"} else {",
+							"    pm.test('<a href=\"https://api.vootkids.com/app/curated/v1/kidsAudios.json?limit=8&offSet=0\">KidsAudios_Ordering_PROD Count is</a> ' + jsonData.assets.totalItems + \" and \" + \"Kaltura Audios Count is \" +",
+							"        pm.environment.get(\"totalCountAudio\", '{{totalCountAudio}}'),",
+							"        function() {",
+							"            throw new Error('Total count of KidsAudios_Ordering_PROD is >>>>NOT EQUAL<<<< to Kaltura Audios');",
+							"        });",
+							"}",
+							"",
+							"",
+							"    "
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json; text/hml",
+						"type": "text",
+						"disabled": true
+					}
+				],
+				"url": {
+					"raw": "https://api.vootkids.com/app/curated/v1/kidsAudios.json?limit=8&offSet=0",
+					"protocol": "https",
+					"host": [
+						"api",
+						"vootkids",
+						"com"
+					],
+					"path": [
+						"app",
+						"curated",
+						"v1",
+						"kidsAudios.json"
+					],
+					"query": [
+						{
+							"key": "limit",
+							"value": "8"
+						},
+						{
+							"key": "offSet",
+							"value": "0"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Impelsys User Login",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "62da206d-3995-4f5a-8140-44d6beb3620c",
+						"exec": [
+							"const jsonData = pm.response.json();",
+							"",
+							"// pm.test(\"Status code is 200\", function () {",
+							"//     pm.response.to.have.status(200);",
+							"// });",
+							"//pm.test(\"X-Jwt-Token is  \" + jsonData.data.token);",
+							"{",
+							"pm.environment.set(\"X-Jwt-Token\", jsonData.data.token);",
+							"}",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n\"username\": \"voot_kids@viacom18.com\",\r\n\"password\": \"V18v00tk!d$\"\r\n}",
+					"options": {
+						"raw": {}
+					}
+				},
+				"url": {
+					"raw": "https://api-apsouth.ipublishcentral.net/account/v1/login",
+					"protocol": "https",
+					"host": [
+						"api-apsouth",
+						"ipublishcentral",
+						"net"
+					],
+					"path": [
+						"account",
+						"v1",
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Impelsys Total Ebooks",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "37583b38-f994-4ae7-8c71-3badcc201c14",
+						"exec": [
+							"const jsonData = pm.response.json();",
+							"",
+							"pm.test(\"Impelsys Ebooks count is \" + jsonData.data._pagination.totalCount );",
+							"{",
+							"pm.environment.set(\"totalCountEbooks\", jsonData.data._pagination.totalCount);",
+							"}"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					},
+					{
+						"key": "X-Jwt-Token",
+						"value": "{{X-Jwt-Token}}",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "https://api-apsouth.ipublishcentral.net/catalog/v1/products?page-number=1&page-size=10",
+					"protocol": "https",
+					"host": [
+						"api-apsouth",
+						"ipublishcentral",
+						"net"
+					],
+					"path": [
+						"catalog",
+						"v1",
+						"products"
+					],
+					"query": [
+						{
+							"key": "page-number",
+							"value": "1"
+						},
+						{
+							"key": "page-size",
+							"value": "10"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "allKidsEbooks_UAT",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "7414eb67-eda4-42fe-9a3b-c140ea84e342",
+						"exec": [
+							"const jsonData = pm.response.json();",
+							"  ",
+							"pm.environment.set(\"allKidsEbooks_UAT\", jsonData.assets.totalItems);",
+							"",
+							"",
+							"if (jsonData.assets.totalItems == pm.environment.get(\"totalCountEbooks\", '{{totalCountEbooks}}')) {",
+							"    pm.test(\"allKidsEbooks_UAT API count is \" + jsonData.assets.totalItems);",
+							"} else {",
+							"    pm.test('<a href=\"https://apiuat.vootkids.com/app/ebook/v1/allKidsEbooks.json?pageSize=8&pageIndex=0\">allKidsEbooks_UAT Count is</a> ' + jsonData.assets.totalItems + \" and \" + \"Impelsys Ebooks Count is \" +",
+							"        pm.environment.get(\"totalCountEbooks\", '{{totalCountEbooks}}'),",
+							"        function() {",
+							"            throw new Error('Total count of allKidsEbooks_UAT is >>>>NOT EQUAL<<<< to Impelsys Ebooks');",
+							"        });",
+							"}"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"type": "text",
+						"value": "application/json; text/hml",
+						"disabled": true
+					}
+				],
+				"url": {
+					"raw": "https://apiuat.vootkids.com/app/ebook/v1/allKidsEbooks.json?pageSize=8&pageIndex=0",
+					"protocol": "https",
+					"host": [
+						"apiuat",
+						"vootkids",
+						"com"
+					],
+					"path": [
+						"app",
+						"ebook",
+						"v1",
+						"allKidsEbooks.json"
+					],
+					"query": [
+						{
+							"key": "pageSize",
+							"value": "8"
+						},
+						{
+							"key": "pageIndex",
+							"value": "0"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "allKidsEbooks_PROD",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "57344b89-bcb8-45ae-8118-6f25388eef08",
+						"exec": [
+							"const jsonData = pm.response.json();",
+							"",
+							"pm.environment.set(\"allKidsEbooks_PROD\", jsonData.assets.totalItems);",
+							"",
+							"",
+							"if (jsonData.assets.totalItems == pm.environment.get(\"totalCountEbooks\", '{{totalCountEbooks}}')) {",
+							"    pm.test(\"allKidsEbooks_PROD API count is \" + jsonData.assets.totalItems);",
+							"} else {",
+							"    pm.test('<a href=\"https://api.vootkids.com/app/ebook/v1/allKidsEbooks.json?pageSize=8&pageIndex=0\">allKidsEbooks_PROD Count is</a> ' + jsonData.assets.totalItems + \" and \" + \"Impelsys Ebooks Count is \" +",
+							"        pm.environment.get(\"totalCountEbooks\", '{{totalCountEbooks}}'),",
+							"        function() {",
+							"            throw new Error('Total count of allKidsEbooks_PROD is >>>>NOT EQUAL<<<< to Impelsys Ebooks');",
+							"        });",
+							"}"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json; text/hml",
+						"type": "text",
+						"disabled": true
+					}
+				],
+				"url": {
+					"raw": "https://api.vootkids.com/app/ebook/v1/allKidsEbooks.json?pageSize=8&pageIndex=0",
+					"protocol": "https",
+					"host": [
+						"api",
+						"vootkids",
+						"com"
+					],
+					"path": [
+						"app",
+						"ebook",
+						"v1",
+						"allKidsEbooks.json"
+					],
+					"query": [
+						{
+							"key": "pageSize",
+							"value": "8"
+						},
+						{
+							"key": "pageIndex",
+							"value": "0"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "KidsEbooks_Ordering_UAT",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "c7f597d5-923b-4e56-8aa1-cc470bfcfc85",
+						"exec": [
+							"const jsonData = pm.response.json();",
+							"",
+							"",
+							"",
+							"",
+							"",
+							"if (jsonData.assets.totalItems == pm.environment.get(\"totalCountEbooks\", '{{totalCountEbooks}}')) {",
+							"    pm.test(\"KidsEbooks_Ordering_UAT API count is \" + jsonData.assets.totalItems);",
+							"} else {",
+							"    pm.test('<a href=\"https://apiuat.vootkids.com/app/curated/v1/kidsEbooks.json?limit=8&offSet=0\">KidsEbooks_Ordering_UAT Count is</a> ' + jsonData.assets.totalItems + \" and \" + \"Impelsys Ebooks Count is \" +",
+							"        pm.environment.get(\"totalCountEbooks\", '{{totalCountEbooks}}'),",
+							"        function() {",
+							"            throw new Error('Total count of KidsEbooks_Ordering_UAT is >>>>NOT EQUAL<<<< to Impelsys Ebooks');",
+							"        });",
+							"}"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"type": "text",
+						"value": "application/json; text/hml",
+						"disabled": true
+					}
+				],
+				"url": {
+					"raw": "https://apiuat.vootkids.com/app/curated/v1/kidsEbooks.json?limit=8&offSet=0",
+					"protocol": "https",
+					"host": [
+						"apiuat",
+						"vootkids",
+						"com"
+					],
+					"path": [
+						"app",
+						"curated",
+						"v1",
+						"kidsEbooks.json"
+					],
+					"query": [
+						{
+							"key": "limit",
+							"value": "8"
+						},
+						{
+							"key": "offSet",
+							"value": "0"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "KidsEbooks_Ordering_PROD",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "9ad3e4be-e8dc-4576-b442-6122f8f90c87",
+						"exec": [
+							"const jsonData = pm.response.json();",
+							"",
+							"",
+							" if (jsonData.assets.totalItems == pm.environment.get(\"totalCountEbooks\", '{{totalCountEbooks}}')) {",
+							"",
+							"   pm.test('kidsEbooks_Ordering_PROD API count is ' + jsonData.assets.totalItems);",
+							"",
+							" } ",
+							" else {",
+							"    pm.test('<a href=\"https://api.vootkids.com/app/curated/v1/kidsEbooks.json?limit=8&offSet=0\">kidsEbooks_Ordering_PROD Count is</a> ' + jsonData.assets.totalItems + \" and \" + \"Impelsys Ebooks Count is \" +",
+							"        pm.environment.get(\"totalCountEbooks\", '{{totalCountEbooks}}'),",
+							"        function() {",
+							"            throw new Error('Total count of kidsEbooks_Ordering_PROD Count is is >>>>NOT EQUAL<<<< to Impelsys Ebooks');",
+							"        });",
+							"}"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"type": "text",
+						"value": "application/json; text/hml",
+						"disabled": true
+					}
+				],
+				"url": {
+					"raw": "https://api.vootkids.com/app/curated/v1/kidsEbooks.json?limit=8&offSet=0",
+					"protocol": "https",
+					"host": [
+						"api",
+						"vootkids",
+						"com"
+					],
+					"path": [
+						"app",
+						"curated",
+						"v1",
+						"kidsEbooks.json"
+					],
+					"query": [
+						{
+							"key": "limit",
+							"value": "8"
+						},
+						{
+							"key": "offSet",
+							"value": "0"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"protocolProfileBehavior": {}
+}

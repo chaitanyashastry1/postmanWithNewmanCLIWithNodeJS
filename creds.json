@@ -1,0 +1,10 @@
+{
+    "username": "Enter your email", 
+    "password": "Enter your emailPassword",
+    "host": "smtp.office365.com",
+    "to": "example@g.com",
+    "cc": "example2@g.com",
+    "TeamsUrl_Tests": "https://outlook.office.com/webhook/0a09ed3e-ee30-44f0-9f86-fe795f8adbec@277f1fb3-53dd-45a9-ba51-b7baa95834eb/IncomingWebhook/b4dfed3083294805ada531c59ee45007/e085179e-d17f-479b-8c41-14418335f8ed",
+    "TeamsUrl_VK_Tests": "https://moraviait.webhook.office.com/webhookb2/830bc8cd-2d6d-4108-9d8c-a601425e2e77@277f1fb3-53dd-45a9-ba51-b7baa95834eb/IncomingWebhook/78c207ffbc09463e9a07c9e3ede13e5a/e085179e-d17f-479b-8c41-14418335f8ed"
+
+}

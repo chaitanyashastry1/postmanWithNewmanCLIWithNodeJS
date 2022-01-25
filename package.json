@@ -1,0 +1,28 @@
+{
+  "name": "newmantest",
+  "version": "1.0.0",
+  "description": "Total count testing",
+  "main": "totalCount.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "chaitanya shastry",
+  "license": "ISC",
+  "dependencies": {
+    "axios": "^0.21.1",
+    "bluebird": "^3.7.2",
+    "email-templates": "^7.0.4",
+    "express": "^4.17.1",
+    "express-handlebars": "^3.1.0",
+    "handlebars": "^4.7.3",
+    "json5": "^2.1.3",
+    "newman": "^4.5.7",
+    "newman-reporter-html": "^1.0.5",
+    "newman-reporter-htmlextra": "^1.10.1",
+    "newman-reporter-slack": "^1.2.0",
+    "nodemailer": "^6.4.4",
+    "nodemailer-express-handlebars": "^3.1.0",
+    "path": "^0.12.7",
+    "request": "^2.88.2"
+  }
+}

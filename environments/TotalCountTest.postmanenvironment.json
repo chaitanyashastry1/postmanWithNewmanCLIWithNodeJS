@@ -1,0 +1,109 @@
+{
+	"id": "3c15468b-4304-471c-9a27-16356986f5a3",
+	"name": "Total Count Test",
+	"values": [
+		{
+			"key": "ks",
+			"value": "djJ8MjI1fJZu83ArwYi2ha0u-CJxPvb06CKlXGxm9kgdZG-M-xJND7uxLDjkDNTjTG9e1dX3rjwJ8M4f81HXq1aOOAu1kzz5OP1lhyLZJCNbA1pfzpa2LEhp5XteTbls6AbMmLkT3c4AMcbjbK6WIx4okUwqtUEFXoJHPHq_V4DaUAsk7_GVHvp5vHnCl-Ol6OXf16LaJ7ItWZ12-Ald0dUAfH1Dqg0=",
+			"enabled": true
+		},
+		{
+			"key": "X-Jwt-Token",
+			"value": "eyJhbGciOiJIUzI1NiJ9.eyJpc3MiOiIzIiwic3ViIjoiVm9vdCBLaWRzIiwidXNlcl9pZCI6IjM1MiIsImZuIjoiVm9vdCBLaWRzIiwiZW1haWwiOiJ2b290X2tpZHNAdmlhY29tMTguY29tIiwidXNlcl9yb2xlcyI6IlsyLDFdIiwidHlwZSI6InRlbmFudEFkbWluIiwiYWRtaW4iOnRydWUsImN0IjozNTMyNjAwNjUyODM5NDYyLCJpcCI6IjEyNS4yMi45LjEzMyIsImluc3RpdHV0aW9uQXV0aCI6ZmFsc2UsImlhdCI6MTU4NDUxMTUyOSwiZXhwIjoxNTg0NTk3OTI5fQ.tR-EKpe_L9Z0nc3eZ0sz86U0CgKwMAlDnOYlaeLtzI0",
+			"enabled": true
+		},
+		{
+			"key": "totalCountSeries",
+			"value": "204",
+			"enabled": true
+		},
+		{
+			"key": "totalCountAudio",
+			"value": "195",
+			"enabled": true
+		},
+		{
+			"key": "totalCountMovie",
+			"value": "69",
+			"enabled": true
+		},
+		{
+			"key": "totalCountEbooks",
+			"value": "470",
+			"enabled": true
+		},
+		{
+			"key": "KidsCharacters UAT",
+			"value": "204",
+			"enabled": true
+		},
+		{
+			"key": "AllKA_UAT",
+			"value": "195",
+			"enabled": true
+		},
+		{
+			"key": "AllKA_PROD",
+			"value": "195",
+			"enabled": true
+		},
+		{
+			"key": "AllKA_ORD_UAT",
+			"value": "195",
+			"enabled": true
+		},
+		{
+			"key": "kidsMovies_UAT",
+			"value": "69",
+			"enabled": true
+		},
+		{
+			"key": "allKidsEbooks_UAT",
+			"value": "470",
+			"enabled": true
+		},
+		{
+			"key": "allKidsEbooks_PROD",
+			"value": "470",
+			"enabled": true
+		},
+		{
+			"key": "KidsEbooks_Ordering_UAT",
+			"value": "470",
+			"enabled": true
+		},
+		{
+			"key": "ssoToken",
+			"value": "",
+			"enabled": true
+		},
+		{
+			"key": "kidsMovies_Test",
+			"value": "",
+			"enabled": true
+		},
+		{
+			"key": "AllKA_STG",
+			"value": "",
+			"enabled": true
+		},
+		{
+			"key": "AllKA_ORD_TEST",
+			"value": "",
+			"enabled": true
+		},
+		{
+			"key": "allKidsEbooks_STG",
+			"value": "",
+			"enabled": true
+		},
+		{
+			"key": "KalturaSession",
+			"value": "",
+			"enabled": true
+		}
+	],
+	"_postman_variable_scope": "environment",
+	"_postman_exported_at": "2020-10-08T06:33:45.583Z",
+	"_postman_exported_using": "Postman/7.33.1"
+}
